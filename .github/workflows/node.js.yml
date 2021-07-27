@@ -1,16 +1,16 @@
 # This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
- name: Example workflow for Node using Snyk
-    on: push
-    jobs:
-      security:
-        runs-on: ubuntu-latest
-        steps:
-          - uses: actions/checkout@master
-          - name: Run Snyk to check for vulnerabilities
-            uses: snyk/actions/node@master
-            env:
-              SNYK_TOKEN: ${{ 277f10aa-444e-49ad-b996-7b85c65ca524 }}
-            with:
-              args: --severity-threshold=high
+name: Example workflow for Node using Snyk
+   on: push
+   jobs:
+     security:
+       runs-on: ubuntu-latest
+       steps:
+         - uses: actions/checkout@master
+         - name: Run Snyk to check for vulnerabilities
+           uses: snyk/actions/node@master
+           env:
+             SNYK_TOKEN: ${{ 277f10aa-444e-49ad-b996-7b85c65ca524 }}
+           with:
+             args: --severity-threshold=high
