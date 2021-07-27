@@ -2,6 +2,7 @@
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
 name: Example workflow for Node using Snyk
+on: push
 jobs:
   security:
     runs-on: ubuntu-latest
