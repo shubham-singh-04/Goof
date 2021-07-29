@@ -13,9 +13,7 @@ jobs:
       - name: snyk install
         run: npm install snyk
       - name: snyk authentification
-        run: snyk auth
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        run: snyk auth [11c26ddf-0194-43c5-8d40-7f9a3af58d34]
       - name: install snyk to hml
         run: npm install snyk-to-html -g
       - name: run snyk test
