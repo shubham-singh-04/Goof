@@ -1,6 +1,3 @@
-# This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
 name: Example workflow for Node using Snyk
 on: push
 jobs:
@@ -9,14 +6,18 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: npm install
-        run: npm install
+        run:  npm install
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high
       - name: snyk install
-        run: npm install snyk
-      - name: snyk authentification
-        run: snyk auth 11c26ddf-0194-43c5-8d40-7f9a3af58d34
-      - name: install snyk to hml
-        run: npm install snyk-to-html -g
-      - name: run snyk test
-        run: snyk test --json
-      - name: Print JSON to HTML
-        run: snyk test --json | snyk-to-html -o results.html 
+        run:  npm install snyk
+      - name: install snyk to html
+        run:  npm install snyk-to-html -g
+      - name: print to html
+        run:  npm install snyk
+              snyk test --json | snyk-to-html -o result.html
