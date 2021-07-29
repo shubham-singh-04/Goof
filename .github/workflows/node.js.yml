@@ -11,7 +11,7 @@ jobs:
       - name: npm install
         run: npm install
       - name: snyk install
-        run: npm install snyk -g
+        run: npm install snyk
       - name: snyk authentification
         run: snyk auth ${{ secrets.SNYK_TOKEN }}   
       - name: install snyk to hml
