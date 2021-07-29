@@ -8,12 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: npm install
-        run: npm install
-      - name: snyk install
-        run: npm install snyk
-      - name: snyk authentification
-        run: snyk auth
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       - name: install snyk to hml
