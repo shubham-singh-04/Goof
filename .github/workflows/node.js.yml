@@ -7,23 +7,13 @@ jobs:
       - uses: actions/checkout@master
       - name: npm install
         run:  npm install
+      - name: install snyk to html
+        run:  npm install snyk-to-html -g
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/node@master
         continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: --json
-      - name: snyk install
-        run:  npm install snyk
-      - name: install snyk to html
-        run:  npm install snyk-to-html -g
-      - name: Generate JSON data by running snyk test and save the output to a file
-        run:  snyk test --json > results.json
-      - name: ass the resulting JSON file to Snyk's JSON to HTML Mapper
-        run: snyk-to-html -i results.json -o results.html
-      - name: Archive results
-        uses: actions/upload-artifact@v2
-        with:
-          name: Snyk result
-          path: output/result.html
+          args: --json | snyk-to-html -o results.html
+      
