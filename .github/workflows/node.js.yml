@@ -18,8 +18,10 @@ jobs:
         run:  npm install snyk
       - name: install snyk to html
         run:  npm install snyk-to-html -g
-      - name: print to html
-        run:  snyk test --json | snyk-to-html -o result.html
+      - name: Generate JSON data by running snyk test and save the output to a file
+        run:  snyk test --json > results.json
+      - name: ass the resulting JSON file to Snyk's JSON to HTML Mapper
+        run: snyk-to-html -i results.json -o results.html
       - name: Archive results
         uses: actions/upload-artifact@v2
         with:
