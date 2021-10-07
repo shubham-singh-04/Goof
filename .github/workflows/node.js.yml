@@ -7,13 +7,10 @@ jobs:
       - uses: actions/checkout@master
       - name: npm install
         run:  npm install
-      - name: install snyk to html
-        run:  npm install snyk-to-html -g
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/node@master
         continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          args: --json | snyk-to-html -o results.html
+      - run: snyk monitor
       
