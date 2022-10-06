@@ -27,5 +27,10 @@ jobs:
        run: |
          npm install snyk-to-html -g
          snyk test --json | snyk-to-html -o result.html
-         mkdir downloads
-         cp -v /home/....
+
+     - name: 'Upload Artifact'
+       uses: actions/upload-artifact@v3
+       with:
+         name: result.html
+         path: output/result.html
+         retention-days: 5
