@@ -72,7 +72,7 @@ pipeline {
                 }
                 // stage('Snyk Code') {
                 //     steps {
-                //             sh './snyk code test'
+                //             sh 'snyk code test'
                 //         }
                 //     }
                 // }
