@@ -64,7 +64,7 @@ pipeline {
             parallel {
                 stage('Snyk Open Source') {
                     steps {
-                            sh './snyk test --json | snyk-filter -f /path/to/example-cvss-9-or-above.yml' //https://github.com/snyk-labs/snyk-filter/blob/develop/sample-filters/example-cvss-9-or-above.yml
+                            sh 'snyk test --json | snyk-filter -f /path/to/example-cvss-9-or-above.yml' // this template had been used https://github.com/snyk-labs/snyk-filter/blob/develop/sample-filters/example-cvss-9-or-above.yml
                         }
                     }
                 }
