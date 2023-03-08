@@ -1,4 +1,4 @@
-name: "Upload package.json SARIF"
+name: "Snyk Github Action with output html and sarif"
 # Run workflow each time code is pushed to your repository.
 on: push
 jobs:
